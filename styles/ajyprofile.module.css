@@ -1,0 +1,85 @@
+.background__profileAjy {
+    background-image: url('../public/imgs/ajyprofile.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 506px;
+}
+
+
+.user__avatar img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+}
+
+
+.left__about__user {
+    position: relative;
+    bottom: 85px;
+}
+
+
+.information__user ul li {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 33px;
+    color: #474665;
+}
+
+
+
+.information__user ul li a {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 33px;
+    color: #474665;
+}
+
+
+.instagramm__side {
+    margin-top: 62px;
+}
+
+.intagramm__title {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 33px;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.instagramm__btn{
+    margin-top: 16px;
+}
+
+
+.instagramm__btn button {
+    padding: 16px 10px;
+    background: #125D98;
+    border-radius: 4px;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+
+}
+
+.user__descriptions{
+    margin-top: 55px;
+}

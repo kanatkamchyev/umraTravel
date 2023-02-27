@@ -1,0 +1,183 @@
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.inside__arab {
+    display: flex;
+    align-items: center;
+}
+
+.one__of__arab {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 120%;
+    color: #000;
+}
+
+
+.center__arab {
+    width: 180px;
+}
+
+.center__arab img {
+    position: relative;
+    left: -120px;
+    top: -170px;
+    z-index: 1;
+}
+
+
+
+.back__color__leaft_arab {
+    padding: 60px;
+    width: 505px;
+    height: 643px;
+    background: rgba(225, 244, 255, 0.17);
+    border: 1px solid #E1F4FF;
+    border-radius: 12px;
+}
+
+
+.standart__arab {
+    margin-top: 20px;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 150%;
+}
+
+.menu__arab__inside {
+    margin-top: 51px;
+    display: flex;
+    gap: 59px;
+}
+
+.title_and_num__arab {
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.num__arab_circle {
+    padding: 3px 9px;
+    background-color: #125D98;
+    border-radius: 50%;
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+}
+
+.title__arab_text {
+    color: #112F53;
+    font-family: "Lato", sans-serif;
+    font-style: SemiBold;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+@media(max-width:1260px) {
+
+    .one__of__arab {
+        margin-top: 20px;
+    }
+
+
+}
+
+@media(max-width:1060px) {
+
+    .back__color__leaft_arab {
+        padding: 30px;
+        width: 400px;
+        height: 440px;
+    }
+
+    .center__arab img {
+        width: 300px;
+        height: 390px;
+        top: -90px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .inside__arab {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu__arab__inside{
+        justify-content: center;
+    }
+
+    .one__of__arab{
+        text-align: center;
+    }
+
+    .standart__arab{
+        text-align: center;
+    }
+
+}
+
+
+@media(max-width:660px) {
+
+    .center__arab img {
+        width: 250px;
+        height: 330px;
+        top: -110px;
+        left: -90px;
+    }
+
+
+
+}
+
+@media(max-width:635px) {
+    .center__arab img {
+    display: none;
+    }
+
+}
+
+
+@media(max-width:600px) {
+    .one__of__arab {
+        font-size: 26px;
+        line-height: 32px;
+    }
+
+    .standart__arab {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 21px;
+        color: #0C0C0C;
+    }
+}
+
+@media(max-width:400px) {
+    .title__arab_text{
+        font-size: 16px;
+    }
+
+    .one__of__arab{
+        font-size:22px ;
+    }
+    
+
+
+}
+
+@media(max-width:370px) {
+    .menu__arab__inside {
+        gap: 20px;
+    }
+
+}
