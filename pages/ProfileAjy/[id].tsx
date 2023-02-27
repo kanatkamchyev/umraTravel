@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 import ProfileAjy from '../../components/AjyProfile/ProfileAjy'
 import NavBar from '../../components/NavBar/Nav-Bar'
@@ -7,8 +8,7 @@ import styles from '../../styles/ajyprofile.module.css'
 export const getStaticPaths = async () => {
     const res = await fetch('https://back.umra.kg/api/v1/accounts/users/');
     const data = await res.json();
-  
-  const {results} = data
+    const {results} = data
   
     const paths = results.map((o:any) => {
         return {
@@ -19,7 +19,11 @@ export const getStaticPaths = async () => {
         paths,
         fallback: false
     }
+    
   }
+  //  axios.get('https://back.umra.kg/api/v1/accounts/descriptions/').then((res) => console.log(res.data)
+  //  )
+  
   
   
   export const getStaticProps = async (context:any) => {
@@ -42,7 +46,6 @@ export const getStaticPaths = async () => {
 
 
 const AjyProfile = ({user}: Props) => {
-
   
   return (
     <div className='AjyProfile' id='AjyProfile'>

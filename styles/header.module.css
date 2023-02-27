@@ -99,6 +99,7 @@ justify-content: center;
 .inside__filtered__box{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .filter__bottom__select{

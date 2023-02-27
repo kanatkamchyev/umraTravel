@@ -151,7 +151,7 @@ export default function Header() {
               <div className={styles.filter__top__select}>
                 <TourFilter />
                 <p>  Тур пакет</p>
-              
+
               </div>
               <div className={styles.filter__bottom__select}>
                 <Select
@@ -178,7 +178,7 @@ export default function Header() {
               <div className={styles.filter__top__select}>
                 <PriceFilter />
                 <p>  Цена</p>
-              
+
               </div>
               <div className={styles.filter__bottom__select}>
                 <Select
@@ -210,7 +210,7 @@ export default function Header() {
               <div className={styles.filter__top__select}>
                 <UserFilter />
                 <p> Ажи-Башы</p>
-               
+
               </div>
               <div className={styles.filter__bottom__select}>
                 <Select
@@ -241,10 +241,18 @@ export default function Header() {
                   </button>
                 </div>
               </div>
-              <div className={styles.filter__bottom__selects} onClick={handleReset}>
-                <ClearSearch />
-                Очистить фильтр
-              </div>
+              {
+                query.category || query.user || query.price__gt || query.price__lt || query.date[0] ?
+                  <div className={styles.filter__bottom__selects} onClick={handleReset}>
+                    <ClearSearch />
+                    Очистить фильтр
+                  </div>
+
+                  :
+                  ''
+
+              }
+
 
             </div>
           </div>

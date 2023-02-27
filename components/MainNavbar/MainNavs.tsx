@@ -28,9 +28,9 @@ const MainNavs = () => {
     <div className={styles.nav__bar_li}>
       <ul>
         <Navli title='Главная' href={'/'} />
-        <Navli title='Про нас' href={'about'} />
-        <Navli title='Ажи-Баши' href={'Ajys'} />
-        <Navli title='Контакты' href={'contact'} />
+        <Navli title='Про нас' href={'/about'} />
+        <Navli title='Ажи-Баши' href={'/Ajys'} />
+        <Navli title='Контакты' href={'/contact'} />
       </ul>
     </div>
     <div className={styles.navbar__left}>

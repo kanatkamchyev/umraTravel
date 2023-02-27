@@ -4,53 +4,48 @@ import Image from 'next/image'
 import { UserCalendar, UserFirstName, UserLocate, UserPhone, UserWhatsapp } from '../../assets/svg/SVG'
 import Default from '../../public/imgs/user_default.svg'
 import axios from 'axios'
+import { useRouter } from 'next/router'
+import iks from '../../public/imgs/fucked.svg'
+import screen from '../../public/imgs/ajy_screen.svg'
+import { Item } from '../Item/Item'
 
 
-export const getStaticPaths = async () => {
-    const res = await fetch('https://back.umra.kg/api/v1/accounts/descriptions/');
-    const data = await res.json();
 
-    const {results} = data
-    const paths = results.map((o:any) => {
-        return {
-            params: { id: o.id.toString() }
-        }
-    })
-    return {
-        paths,
-        fallback: false
-    }
-  }
-  
-  
-  export const getStaticProps = async (context:any) => {
-    const id = context.params.id;
-    const res = await fetch(`https://back.umra.kg/api/v1/accounts/descriptions/?user=${id}`);
-    const data = await res.json();
-    console.log('dsa', data)
-  
-    return {
-        props: {
-            description: data
-        }
-    }
-  }
-  
+
 
 
 type Props = {
     user: any
 }
 
-interface Props1{
-    description: any
 
-}
+const ProfileAjy = ({ user }: Props,) => {
+    const router = useRouter()
+    const { id } = router.query
+    const [describe, setDescribe] = useState([])
+    const [gallery, setGallery] = useState([])
+    const [tours, setTours] = useState([])
 
-const ProfileAjy = ({ user }: Props, {description}: Props1) => {
+    useEffect(() => {
+        axios.get(`https://back.umra.kg/api/v1/accounts/descriptions/?user=${id}`).then((res: any) => setDescribe(res.data.results)),
+            axios.get(`https://back.umra.kg/api/v1/accounts/gallery/?user=${id}`).then((res: any) => setGallery(res.data.results))
+        axios.get('https://back.umra.kg/api/v1/tours/').then((res: any) => setTours(res.data.results))
 
-console.log(description);
-console.log(user);
+    }, [])
+
+    console.log(tours);
+
+    const { title }: any = router.query
+
+
+
+    const [model, setModel] = useState(false)
+    const [tempImgSrc, setTempImgSrc] = useState('')
+    const getImg = (imgSrc: any) => {
+        setTempImgSrc(imgSrc)
+        setModel(true)
+    }
+
 
 
     return (
@@ -108,7 +103,7 @@ console.log(user);
 
                             <div className={styles.instagramm__btn}>
                                 <button>
-                                Посмотреть профиль
+                                    Посмотреть профиль
                                 </button>
                             </div>
 
@@ -117,8 +112,89 @@ console.log(user);
                     <div className={styles.right__about__user}>
                         <div className={styles.user__descriptions}>
                             {
-
+                                describe.map((talent: any, id: number) => {
+                                    return (
+                                        <div className={styles.about_experiense} key={id}>
+                                            <div className={styles.experiense}>{talent.title}</div>
+                                            <div className={styles.experiense_description}>
+                                                {talent.description}
+                                            </div>
+                                        </div>
+                                    )
+                                })
                             }
+                        </div>
+                        <div className={styles.about_reis}>
+                            <div className={styles.reis_title}>Рейсы</div>
+                            <table className={styles.kanat_table}>
+                                <thead className={styles.kanat__thead}>
+                                    <tr className={styles.kanat__tr}>
+                                        <td className={styles.kanat__td}>№</td>
+                                        <td className={styles.kanat__td}>Дата вылета</td>
+                                        <td className={styles.kanat__td}>Дата прилета</td>
+                                        <td className={styles.kanat__td}>Маршрут</td>
+                                        <td className={styles.kanat__td}>Пакет</td>
+                                    </tr>
+                                </thead>
+                                <tbody className={styles.kanat_tbody}>
+                                    {tours.length != 0
+                                        ? tours.map((item: any, index: any) => (
+                                            <Item key={item.id} item={item} index={index} />
+                                        ))
+                                        : null
+                                    }
+
+                                </tbody>
+                            </table>
+                            {
+                                tours.length == 0 ? (
+                                    <div className="profileAji__warning">
+                                        <div>Рейсов нет</div>
+                                    </div>
+                                )
+                                    : null
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.bottom__about_gallery}>
+                    <div className={styles.gallery__time}>
+                        <div className={model ? 'model open' : 'model'}>
+                            <div className={styles.appears}>
+                                <img src={tempImgSrc} alt="" />
+
+                            </div>
+                            <div className={styles.closed__gallery} onClick={() => setModel(false)}>
+                                <Image src={iks} alt="/" />
+                            </div>
+                        </div>
+
+                        <div className={styles.gallery__images}>
+                            {
+                                user.role === 4 || user.role === 3 ?
+                                    <div className="with__gallery-title">
+
+                                        <div className={styles.gallery__title}> {gallery.length > 0 ? 'Галлерея' : ''}</div>
+                                        <div className={styles.images__inside_this__gallery}>
+                                            {
+
+                                                gallery.map((item: any) => (
+                                                    <div className={styles.pics} key={item.id} onClick={() => getImg(item.image)}>
+                                                        <img className={styles.item__image__gallery} src={item.image} alt="" />
+                                                        <div className={styles.overlay}>
+                                                            <div className={styles.hover}>
+                                                                <h4><Image src={screen} alt="/" />  на весь экран</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                ))
+                                            }
+                                        </div>
+                                    </div> :
+                                    null
+                            }
+
                         </div>
                     </div>
                 </div>
